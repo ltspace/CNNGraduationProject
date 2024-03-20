@@ -1,0 +1,181 @@
+{
+    "name": "test",
+    "securityToken": "test Token",
+    "sourceConnection": {
+        "name": "test",
+        "providerType": "localFileSystemProxy",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiY2VlODc2Nzc5MDM5ODI0NzljOTA5MWY0ZTU0YmI4MDU4OTIxNWZjODJlMmExODYzMzE3ZTcxZTg1ODExNzhmM2M4ZWQwNTMzODMyMjA5YjU3ZDliOWE2M2U2ZWM4ODBjMTMzZDQ1YjIyOTk4M2JmZTEyMzI3Njk1ZWUyOGJjYjZkOTVkMDkyZmRlNjBjYjNmODJmNTI4MmZhOWFkMjNlOCIsIml2IjoiYzRlMDljNzY5MGRjYmM0Njk5N2Q0NzM0MzM3NzNlM2JkMTBjOTAwN2M3MmY1NWY2In0="
+        },
+        "id": "0VRccciH0"
+    },
+    "targetConnection": {
+        "name": "test",
+        "providerType": "localFileSystemProxy",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiNjMwY2NiOWEyNzI3ZWRhMzFkNWJkYWUwMTZlMmY1ZTlhZTA1Y2M3MDA3NzA4ODMzOWRkMTllNTU0YmMwNGNhODA1YTA4ZTI3ZTJmMmQ5OTliMWIyYzMzYWJiMzNmN2IwZTY4YWY1MjVkZjdlMzUyNDZiOTg5OTkxNjQxYzMxY2JiNDI5ZmQxNDIyYjJkOTZmZmM2ZWU2NGM3NjYxNDEzZCIsIml2IjoiYjA1NGIzNjI5YTdlMTIxOWI3YjlkNTNjYjNiODU0MzY5ZDgzYWIwNWM0MGFhYzA5In0="
+        },
+        "id": "-1b7x_BFC"
+    },
+    "videoSettings": {
+        "frameExtractionRate": 15
+    },
+    "tags": [
+        {
+            "name": "bur",
+            "color": "#5db300"
+        },
+        {
+            "name": "no bur",
+            "color": "#e81123"
+        }
+    ],
+    "id": "DBfVqqGdz",
+    "activeLearningSettings": {
+        "autoDetect": false,
+        "predictTag": true,
+        "modelPathType": "coco"
+    },
+    "exportFormat": {
+        "providerType": "vottJson",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiOWJkYmNjMzdiOTZjNGIzODc0YzQyYTdiYmY3NmY5YTA1MzRiZGFjZTUxMzMyNjNiMWYwYWMxMzg1ZDhjYjc4NTgzMTBhM2ZkNzMyNjNhODBkZWFiMTBlNGFkNDU3MWM2IiwiaXYiOiIzYjU4NGJmOTQwOGMzMWNlNjczM2ZlNGNiZjM4NzY5M2NkMWQyMzQ2YTk3YmZiYzUifQ=="
+        }
+    },
+    "version": "2.2.0",
+    "lastVisitedAssetId": "d4d7c077b2f95627e8820476687414f1",
+    "assets": {
+        "035ee2610c885126c367defdb8a0fe75": {
+            "format": "png",
+            "id": "035ee2610c885126c367defdb8a0fe75",
+            "name": "1.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/1.png",
+            "size": {
+                "width": 111,
+                "height": 486
+            },
+            "state": 1,
+            "type": 1
+        },
+        "d4d7c077b2f95627e8820476687414f1": {
+            "format": "png",
+            "id": "d4d7c077b2f95627e8820476687414f1",
+            "name": "2.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/2.png",
+            "size": {
+                "width": 97,
+                "height": 491
+            },
+            "state": 1,
+            "type": 1
+        },
+        "9f4fb2913963e1cf0168dcc7ef72e697": {
+            "format": "png",
+            "id": "9f4fb2913963e1cf0168dcc7ef72e697",
+            "name": "3.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/3.png",
+            "size": {
+                "width": 94,
+                "height": 492
+            },
+            "state": 2,
+            "type": 1
+        },
+        "339bda0d280e7813dbe6e1f441c6c690": {
+            "format": "png",
+            "id": "339bda0d280e7813dbe6e1f441c6c690",
+            "name": "4.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/4.png",
+            "size": {
+                "width": 105,
+                "height": 494
+            },
+            "state": 1,
+            "type": 1
+        },
+        "ae3f49639a3217b62e13577b337b93a6": {
+            "format": "png",
+            "id": "ae3f49639a3217b62e13577b337b93a6",
+            "name": "5.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/5.png",
+            "size": {
+                "width": 114,
+                "height": 492
+            },
+            "state": 2,
+            "type": 1
+        },
+        "f5e51ba4b6372b480783482aba8bea2a": {
+            "format": "png",
+            "id": "f5e51ba4b6372b480783482aba8bea2a",
+            "name": "6.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/6.png",
+            "size": {
+                "width": 124,
+                "height": 490
+            },
+            "state": 2,
+            "type": 1
+        },
+        "fdd518c0c7478028c9028169a3d4523b": {
+            "format": "png",
+            "id": "fdd518c0c7478028c9028169a3d4523b",
+            "name": "%E5%9B%BE%E5%B1%82%201.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/%E5%9B%BE%E5%B1%82%201.png",
+            "size": {
+                "width": 76,
+                "height": 389
+            },
+            "state": 2,
+            "type": 1
+        },
+        "d381e2a7da9cd612acdc3ee10da47a7a": {
+            "format": "png",
+            "id": "d381e2a7da9cd612acdc3ee10da47a7a",
+            "name": "%E5%9B%BE%E5%B1%82%202.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/%E5%9B%BE%E5%B1%82%202.png",
+            "size": {
+                "width": 68,
+                "height": 394
+            },
+            "state": 2,
+            "type": 1
+        },
+        "65a9dd7b4853cc3556e72251bcaa1d58": {
+            "format": "png",
+            "id": "65a9dd7b4853cc3556e72251bcaa1d58",
+            "name": "%E5%9B%BE%E5%B1%82%203.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/%E5%9B%BE%E5%B1%82%203.png",
+            "size": {
+                "width": 105,
+                "height": 391
+            },
+            "state": 2,
+            "type": 1
+        },
+        "cc4cb784c7aed173a69bea43639c9f99": {
+            "format": "png",
+            "id": "cc4cb784c7aed173a69bea43639c9f99",
+            "name": "%E5%9B%BE%E5%B1%82%204.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/%E5%9B%BE%E5%B1%82%204.png",
+            "size": {
+                "width": 109,
+                "height": 392
+            },
+            "state": 2,
+            "type": 1
+        },
+        "9742cd76b373a3525a13bbb34dba895e": {
+            "format": "png",
+            "id": "9742cd76b373a3525a13bbb34dba895e",
+            "name": "%E5%9B%BE%E5%B1%82%205.png",
+            "path": "file:D:/QQ/QQ%E6%95%B0%E6%8D%AE/1409757351/FileRecv/test(1)/test/1/%E5%9B%BE%E5%B1%82%205.png",
+            "size": {
+                "width": 68,
+                "height": 394
+            },
+            "state": 2,
+            "type": 1
+        }
+    }
+}
