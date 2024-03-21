@@ -1,7 +1,7 @@
 import os
 from PIL import Image, ImageOps
 
-def resize_and_save_images(input_dir, output_dir, target_size=(256, 256)):
+def resize_and_save_images(input_dir, output_dir, target_size=(224, 224)):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -36,8 +36,8 @@ def resize_and_save_images(input_dir, output_dir, target_size=(256, 256)):
                         image.save(output_image_path, 'JPEG')
 
 # Set your actual paths here
-image_directory = 'C:/Users/14097/Desktop/cnn/data/Paddingdata/'
-output_directory = 'C:/Users/14097/Desktop/cnn/data/Processed224x224data/'
+image_directory = 'C:/Users/14097/Desktop/cnn/data/DoneData/'
+output_directory = 'C:/Users/14097/Desktop/cnn/data/224Data/'
 
 # Process images
 resize_and_save_images(image_directory, output_directory)
