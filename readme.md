@@ -64,11 +64,11 @@ imagaug没问题，试用album的时候生成的图像全黑
 
 
 
-![image-20240321160517361](C:\Users\14097\AppData\Roaming\Typora\typora-user-images\image-20240321160517361.png)
+![image-20240321160517361](/images/image-20240321160517361.png)
 
-![image-20240321162341172](C:\Users\14097\AppData\Roaming\Typora\typora-user-images\image-20240321162341172.png)
+![image-20240321162341172](/images/image-20240321162341172.png)
 
-![image-20240321170513055](C:\Users\14097\AppData\Roaming\Typora\typora-user-images\image-20240321170513055.png)
+![image-20240321170513055](/images/image-20240321170513055.png)
 
 
 
