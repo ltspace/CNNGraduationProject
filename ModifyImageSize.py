@@ -36,8 +36,8 @@ def resize_and_save_images(input_dir, output_dir, target_size=(224, 224)):
                         image.save(output_image_path, 'JPEG')
 
 # Set your actual paths here
-image_directory = 'C:/Users/14097/Desktop/cnn/data/DoneData/'
-output_directory = 'C:/Users/14097/Desktop/cnn/data/224Data/'
+image_directory = 'data/DoneData/'
+output_directory = 'data/224Data/'
 
 # Process images
 resize_and_save_images(image_directory, output_directory)

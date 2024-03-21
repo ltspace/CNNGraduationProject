@@ -2,7 +2,7 @@ import os
 from PIL import Image
 
 # 替换为你的文件夹路径
-folder_path = 'D:\\QQ\\QQ数据\\1409757351\\FileRecv\\test(1)\\test\\11\\vott-json-export'
+folder_path = ''
 
 # 列出文件夹中的所有文件
 files = os.listdir(folder_path)

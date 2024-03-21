@@ -15,8 +15,8 @@ augmentations = Compose([
 ])
 
 # Input and output folder paths
-input_folder_path = 'C:/Users/14097/Desktop/cnn/data/Processed224x224data/1'
-output_folder_path = 'C:/Users/14097/Desktop/cnn/data/Augmented224x224data_albumentations'
+input_folder_path = 'data/Processed224x224data/1'
+output_folder_path = 'data/Augmented224x224data_albumentations'
 
 # Ensure output folder exists
 if not os.path.exists(output_folder_path):

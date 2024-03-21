@@ -3,10 +3,10 @@ import re
 import shutil
 
 # 设置目标目录
-target_directory = 'C:\\Users\\14097\\Desktop\\cnn'
+target_directory = '.'
 
 # 配置你的Markdown文件的路径
-markdown_directory = 'C:\\Users\\14097\\Desktop\\cnn'
+markdown_directory = '.'
 # 配置存放图片的文件夹名称，相对于markdown_directory
 images_directory = 'images\\'
 

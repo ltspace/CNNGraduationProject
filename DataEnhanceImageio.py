@@ -11,8 +11,8 @@ seq = iaa.Sequential([
 ])
 
 # 输入和输出文件夹路径
-input_folder_path = 'C:\\Users\\14097\\Desktop\\cnn\\data\\Processed224x224data\\1'
-output_folder_path = 'C:\\Users\\14097\\Desktop\\cnn\\data\\Augmented224x224data'
+input_folder_path = 'data\\Processed224x224data\\1'
+output_folder_path = 'data\\Augmented224x224data'
 
 # 确保输出文件夹存在
 if not os.path.exists(output_folder_path):

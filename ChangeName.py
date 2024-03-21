@@ -1,7 +1,7 @@
 import os
 
 # 指定存放图片的文件夹路径
-folder_path = r'C:\Users\14097\Desktop\cnn\data\DoneData'
+folder_path = r'data\DoneData'
 
 # 获取文件夹下所有文件名
 files = os.listdir(folder_path)

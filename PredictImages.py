@@ -54,7 +54,7 @@ transform = transforms.Compose([
 ])
 
 # 图像预测目录
-image_dir = 'C:\\Users\\14097\\Desktop\\cnn\\data\\224Data\\1'
+image_dir = 'data\\224Data\\1'
 
 # 预测并打印结果
 for image_name in os.listdir(image_dir):

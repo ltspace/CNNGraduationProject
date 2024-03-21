@@ -44,7 +44,7 @@ random.seed(manualSeed)
 torch.manual_seed(manualSeed)
 
 # 数据集所在路径
-dataroot = "C:/Users/14097/Desktop/cnn/data/Processed224x224data"
+dataroot = "data/Processed224x224data"
 
 # 数据加载的进程数
 workers = 0
