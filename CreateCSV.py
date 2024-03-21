@@ -1,11 +1,11 @@
 import csv
 
 # 设定文件数量和文件名模式
-num_images = 75
+num_images = 81
 image_pattern = "{}.png"
 
 # 创建要写入的CSV文件名
-csv_filename = "image_labels.csv"
+csv_filename = "image_labels3.csv"
 
 # 使用写入模式打开文件，创建一个CSV写入对象
 with open(csv_filename, 'w', newline='') as file:

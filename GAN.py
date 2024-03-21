@@ -44,7 +44,7 @@ random.seed(manualSeed)
 torch.manual_seed(manualSeed)
 
 # 数据集所在路径
-dataroot = "data/Processed224x224data"
+dataroot = "data/Augmented224x224data"
 
 # 数据加载的进程数
 workers = 0
@@ -69,7 +69,7 @@ ndf = 64
 # Number of training epochs
 num_epochs = 150
 # Learning rate for optimizers
-lr = 0.0001
+lr = 0.0003
 # Beta1 hyperparam for Adam optimizers
 beta1 = 0.5
 # Number of GPUs available. Use 0 for CPU mode.

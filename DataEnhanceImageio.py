@@ -11,7 +11,7 @@ seq = iaa.Sequential([
 ])
 
 # 输入和输出文件夹路径
-input_folder_path = 'data\\Processed224x224data\\1'
+input_folder_path = 'data\\Processed224x224data\\3'
 output_folder_path = 'data\\Augmented224x224data'
 
 # 确保输出文件夹存在
