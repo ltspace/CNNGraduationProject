@@ -12,7 +12,7 @@ augmentations = Compose([
     RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2, p=0.5),
     GaussNoise(var_limit=(10.0, 50.0), p=0.5),
     RandomGamma(p=0.5),
-    RandomCrop(height=224, width=224, p=0.5),
+    # RandomCrop(height=224, width=224, p=0.5),
     RandomResizedCrop(height=224, width=224, p=0.5),
     Resize(height=224, width=224),
     Rotate(limit=15, p=0.5),
@@ -20,6 +20,14 @@ augmentations = Compose([
     ElasticTransform(alpha=1, sigma=0.5, alpha_affine=1, p=0.5),
     ToTensorV2(),
 ])
+# Rotate: 旋转图像。
+# ShiftScaleRotate: 缩放、平移和旋转图像。
+# RandomGamma: 改变图像的伽马值。
+# RandomCrop: 随机裁剪图像。
+# RandomResizedCrop: 随机调整大小并裁剪图像。
+# Resize: 调整图像大小。
+# ElasticTransform: 应用弹性变形以模拟图像的非刚性扭曲。
+# ToTensorV2: 将图像转换为PyTorch张量。
 
 # 输入和输出文件夹路径
 input_folder_path = 'data/Processed224x224data/3'

@@ -63,15 +63,15 @@ class CustomDataset(Dataset):
 
 # 这里定义您的图像预处理和数据增强
 transform = transforms.Compose([
-    # transforms.Resize((224, 224)),  # 如果所有图片都是224x224，则不需要这步
+    transforms.Resize((224, 224)),  # 如果所有图片都是224x224，则不需要这步
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),  # ImageNet的均值和标准差
 ])
 
 
 # 指定CSV文件和根目录路径
-csv_file = 'image_labels.csv'
-root_dir = 'data\\224Data\\1'
+csv_file = 'image_labels3.csv'
+root_dir = 'data\\DoneData\\3\\'
 
 # 实例化数据集
 dataset = CustomDataset(csv_file=csv_file, root_dir=root_dir, transform=transform)
@@ -160,10 +160,10 @@ plot_loss_curve(train_losses, val_losses, num_epochs)
 
 
 # 定义测试图像的路径
-test_image_dir = 'data\\224Data\\1'
+test_image_dir = 'data\\DoneData\\3'
 
 # 创建测试数据集实例
-test_image_dataset = CustomDataset(csv_file='image_labels.csv', root_dir=test_image_dir, transform=transform)
+test_image_dataset = CustomDataset(csv_file='image_labels3.csv', root_dir=test_image_dir, transform=transform)
 
 # 创建测试数据加载器
 test_image_loader = DataLoader(test_image_dataset, batch_size=32, shuffle=False)
