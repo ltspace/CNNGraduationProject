@@ -70,6 +70,16 @@ imagaug没问题，试用album的时候生成的图像全黑
 
 ![image-20240321170513055](/images/image-20240321170513055.png)
 
+![Snipaste_2024-03-21_17-06-35](C:\Users\14097\Desktop\Snipaste_2024-03-21_17-06-35.png)
+
+
+
+
+
+![Snipaste_2024-03-21_20-10-21](C:\Users\14097\Desktop\Snipaste_2024-03-21_20-10-21.png)
+
+![image-20240321201613701](C:\Users\14097\AppData\Roaming\Typora\typora-user-images\image-20240321201613701.png)
+
 
 
 resnet结构

@@ -17,24 +17,21 @@ import torchvision.utils as vutils
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+# from IPython.display import HTML
+import os
 from torchvision.utils import save_image
 import time
 
 
-
-
-# 检查文件夹是否存在，如果不存在，创建它
-out_dir = './out'
-if not os.path.exists(out_dir):
-    os.makedirs(out_dir, exist_ok=True)
-
-if torch.cuda.is_available():
-    device = torch.device("cuda")  # 如果可用，使用CUDA
-    print("当前正在使用的 GPU：", torch.cuda.get_device_name(device))
-else:
-    device = torch.device("cpu")  # 如果不可用，回退到CPU
-    print("CUDA不可用，正在使用CPU训练。")
-
+if os.path.exists("out"):
+    print("移除现有 out 文件夹！")
+    os.system("rmdir /s /q out")
+time.sleep(1)
+print("创建 out 文件夹！")
+try:
+    os.mkdir("out")
+except FileExistsError:
+    print("文件夹 'out' 已经存在，无法创建！")
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 # 设置一个随机种子，方便进行可重复性实验
@@ -44,7 +41,7 @@ random.seed(manualSeed)
 torch.manual_seed(manualSeed)
 
 # 数据集所在路径
-dataroot = "data\\Paddingdata"
+dataroot = "data\\Albumentations"
 
 # 数据加载的进程数
 workers = 0
@@ -53,7 +50,7 @@ batch_size = 16 ###
 # Spatial size of training images. All images will be resized to this
 # size using a transformer.
 # 图片大小
-image_size = 128
+image_size = 64
 
 # nz是输入向量 z z z的长度
 
@@ -84,7 +81,6 @@ def to_img(x):
 
 # Decide which device we want to run on
 device = torch.device("cuda:0" if (torch.cuda.is_available() and ngpu > 0) else "cpu")
-
 # We can use an image folder dataset the way we have it setup.
 # Create the dataset 该类要求数据集的根文件夹中有子目录
 dataset = dset.ImageFolder(root=dataroot,
@@ -119,40 +115,32 @@ def weights_init(m):
 
 
 # Generator Code
-# 一系列的二维反卷积层完成创建与训练图像大小相同的图像（3x256x256)，每层都配带有批标准化层和relu激活
+# 一系列的二维反卷积层完成创建与训练图像大小相同的图像（3x64x64)，每层都配带有批标准化层和relu激活
 class Generator(nn.Module):
     def __init__(self, ngpu):
         super(Generator, self).__init__()
         self.ngpu = ngpu
         self.main = nn.Sequential(
-            # 输入的是nz维度的噪声，想要生成一个 (ngf*8) x 4 x 4 的特征图
+            # input is Z, going into a convolution
             nn.ConvTranspose2d(nz, ngf * 8, 4, 1, 0, bias=False),
             nn.BatchNorm2d(ngf * 8),
             nn.ReLU(True),
-            # 特征图大小 (ngf*8) x 4 x 4
+            # state size. (ngf*8) x 4 x 4 (512*4*4
             nn.ConvTranspose2d(ngf * 8, ngf * 4, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ngf * 4),
             nn.ReLU(True),
-            # 特征图大小 (ngf*4) x 8 x 8
+            # state size. (ngf*4) x 8 x 8 (256*8*8
             nn.ConvTranspose2d(ngf * 4, ngf * 2, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ngf * 2),
             nn.ReLU(True),
-            # 特征图大小 (ngf * 2) x 16 x 16
+            # state size. (ngf*2) x 16 x 16 (128*16*16
             nn.ConvTranspose2d(ngf * 2, ngf, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ngf),
             nn.ReLU(True),
-            # 特征图大小 (ngf) x 32 x 32
-            nn.ConvTranspose2d(ngf, ngf // 2, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(ngf // 2),
-            nn.ReLU(True),
-            # 特征图大小 (ngf//2) x 64 x 64
-            nn.ConvTranspose2d(ngf // 2, ngf // 4, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(ngf // 4),
-            nn.ReLU(True),
-            # 特征图大小 (ngf//4) x 128 x 128
-            nn.ConvTranspose2d(ngf // 4, nc, 4, 2, 1, bias=False),
-            nn.Tanh()
-            # 最终输出大小 (nc) x 256 x 256
+            # state size. (ngf) x 32 x 32 (64*32*32
+            nn.ConvTranspose2d(ngf, nc, 4, 2, 1, bias=False),
+            nn.Tanh() #tanh函数处理，以使其返回到[-1, 1]的输入数据范围
+            # state size. (nc) x 64 x 64 3*64*64
         )
 
     def forward(self, input):
@@ -164,31 +152,23 @@ class Discriminator(nn.Module):
         super(Discriminator, self).__init__()
         self.ngpu = ngpu
         self.main = nn.Sequential(
-            # 输入尺寸 (nc) x 256 x 256
+            # input is (nc) x 64 x 64
             nn.Conv2d(nc, ndf, 4, 2, 1, bias=False),
             nn.LeakyReLU(0.2, inplace=True),
-            # 状态尺寸. (ndf) x 128 x 128
+            # state size. (ndf) x 32 x 32
             nn.Conv2d(ndf, ndf * 2, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ndf * 2),
             nn.LeakyReLU(0.2, inplace=True),
-            # 状态尺寸. (ndf*2) x 64 x 64
+            # state size. (ndf*2) x 16 x 16
             nn.Conv2d(ndf * 2, ndf * 4, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ndf * 4),
             nn.LeakyReLU(0.2, inplace=True),
-            # 状态尺寸. (ndf*4) x 32 x 32
+            # state size. (ndf*4) x 8 x 8
             nn.Conv2d(ndf * 4, ndf * 8, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ndf * 8),
             nn.LeakyReLU(0.2, inplace=True),
-            # 状态尺寸. (ndf*8) x 16 x 16
-            nn.Conv2d(ndf * 8, ndf * 16, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(ndf * 16),
-            nn.LeakyReLU(0.2, inplace=True),
-            # 状态尺寸. (ndf*16) x 8 x 8
-            nn.Conv2d(ndf * 16, ndf * 32, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(ndf * 32),
-            nn.LeakyReLU(0.2, inplace=True),
-            # 状态尺寸. (ndf*32) x 4 x 4
-            nn.Conv2d(ndf * 32, 1, 4, 1, 0, bias=False),
+            # state size. (ndf*8) x 4 x 4
+            nn.Conv2d(ndf * 8, 1, 4, 1, 0, bias=False),
             nn.Sigmoid()
         )
 
@@ -229,15 +209,13 @@ criterion = nn.BCELoss() #使用二元交叉熵损失（BCELoss）函数
 fixed_noise = torch.randn(64, nz, 1, 1, device=device)
 
 # Establish convention for real and fake labels during training
-real_label = 0.9
+real_label = 1.0
 fake_label = 0.0
 
 # Setup Adam optimizers for both G and D
 optimizerD = optim.Adam(netD.parameters(), lr=lr, betas=(beta1, 0.999))
 optimizerG = optim.Adam(netG.parameters(), lr=lr, betas=(beta1, 0.999))
 
-schedulerD = torch.optim.lr_scheduler.StepLR(optimizerD, step_size=30, gamma=0.1)
-schedulerG = torch.optim.lr_scheduler.StepLR(optimizerG, step_size=30, gamma=0.1)
 # Training Loop
 
 # Lists to keep track of progress
@@ -258,21 +236,19 @@ for epoch in range(num_epochs):
         # (1) Update D network: maximize log(D(x)) + log(1 - D(G(z)))
         ###########################
         ## Train with all-real batch
-
-        if i % 2 == 0:
-            netD.zero_grad()
-            # Format batch
-            real_cpu = data[0].to(device)
-            b_size = real_cpu.size(0)
-            label = torch.full((b_size,), real_label, device=device)
-            # Forward pass real batch through D
-            # view(-1)的作用是将 判别网络的输出数据维度变为一行与标签的维度相对应
-            output = netD(real_cpu).view(-1)
-            # Calculate loss on all-real batch
-            errD_real = criterion(output, label) #计算损失函数
-            # Calculate gradients for D in backward pass
-            errD_real.backward()
-            D_x = output.mean().item() #判别器对于真实批次的平均输出(整个批次) 理论上收敛到0.5
+        netD.zero_grad()
+        # Format batch
+        real_cpu = data[0].to(device)
+        b_size = real_cpu.size(0)
+        label = torch.full((b_size,), real_label, device=device)
+        # Forward pass real batch through D
+        # view(-1)的作用是将 判别网络的输出数据维度变为一行与标签的维度相对应
+        output = netD(real_cpu).view(-1)
+        # Calculate loss on all-real batch
+        errD_real = criterion(output, label) #计算损失函数
+        # Calculate gradients for D in backward pass
+        errD_real.backward()
+        D_x = output.mean().item() #判别器对于真实批次的平均输出(整个批次) 理论上收敛到0.5
 
         ## Train with all-fake batch用所有的假数据训练
         # Generate batch of latent vectors
@@ -353,10 +329,6 @@ for epoch in range(num_epochs):
                     name = './out/img' + str(i) + str(j) + '.jpg'
                     cv2.imwrite(name, partimg)
     print('time:', time.time() - start)
-
-    # 更新学习率
-    schedulerD.step()
-    schedulerG.step()
 
 # Grab a batch of real images from the dataloader
 # real_batch = next(iter(dataloader))

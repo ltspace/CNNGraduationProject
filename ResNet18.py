@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 
 
-num_epochs = 50  # Define the number of epochs
+num_epochs = 150  # Define the number of epochs
 
 # 检测并输出当前使用的计算设备
 device_info = torch.cuda.is_available()  # True if CUDA is available, else False
@@ -70,8 +70,8 @@ transform = transforms.Compose([
 
 
 # 指定CSV文件和根目录路径
-csv_file = 'image_labels3.csv'
-root_dir = 'data\\DoneData\\3\\'
+csv_file = 'image_labels7.csv'
+root_dir = 'data\\DoneData\\8\\'
 
 # 实例化数据集
 dataset = CustomDataset(csv_file=csv_file, root_dir=root_dir, transform=transform)
@@ -160,10 +160,10 @@ plot_loss_curve(train_losses, val_losses, num_epochs)
 
 
 # 定义测试图像的路径
-test_image_dir = 'data\\DoneData\\3'
+test_image_dir = 'data\\DoneData\\8'
 
 # 创建测试数据集实例
-test_image_dataset = CustomDataset(csv_file='image_labels3.csv', root_dir=test_image_dir, transform=transform)
+test_image_dataset = CustomDataset(csv_file='image_labels7.csv', root_dir=test_image_dir, transform=transform)
 
 # 创建测试数据加载器
 test_image_loader = DataLoader(test_image_dataset, batch_size=32, shuffle=False)
