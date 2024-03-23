@@ -1,3 +1,7 @@
+# 工件毛刺图像采集与分类方法研究
+## Research on image acquisition and classification methods for workpiece burrs
+
+
 ### 3/20 19点50分，开干
 
 打算用VGG微调
